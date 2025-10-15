@@ -37,7 +37,7 @@ const LogoRender = ({
   defaultLogo,
   width,
 }: {
-  base64Logo: string | undefined;
+  base64Logo: string | undefined ;
   defaultLogo: React.JSX.Element;
   width: string | number;
 }) => {
@@ -59,7 +59,9 @@ export const SidebarLogo = () => {
   const isDarkMode = theme.palette.mode === 'dark';
   const { isOpen } = useSidebarOpenState();
   const configApi = useApi(configApiRef);
-  const logoFullBase64URI = isDarkMode ? configApi.getOptionalString('app.branding.fullLogo.dark') : configApi.getOptionalString('app.branding.fullLogo.light');
+  const lightLogo = configApi.getOptionalString('app.branding.fullLogo.light') ?? configApi.getOptionalString('app.branding.fullLogo');
+  const darkLogo =  configApi.getOptionalString('app.branding.fullLogo.dark') ?? configApi.getOptionalString('app.branding.fullLogoDark'); ;
+  const logoFullBase64URI = isDarkMode ? darkLogo : lightLogo;
   const fullLogoWidth = configApi
     .getOptional('app.branding.fullLogoWidth')
     ?.toString();

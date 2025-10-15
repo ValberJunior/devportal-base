@@ -94,10 +94,10 @@ const SignInPageLogo = () => {
   const isDarkMode = theme.palette.mode === 'dark';
   const configApi = useApi(configApiRef);
   const logoFullBase64URI = configApi.getOptionalString(
-    'app.branding.fullLogo',
+    'app.branding.fullLogo.light',
   );
   const logoFullDarkBase64URI = configApi.getOptionalString(
-    'app.branding.fullLogoDark',
+    'app.branding.fullLogo.dark',
   );
   // eslint-disable-next-line no-console
   console.log(theme.palette.mode);
